@@ -24,14 +24,22 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
         this.averageBlockInterval = averageBlockInterval;
     }
 
+    // from Main.createNetwork
+    // populateNetwork
     @Override
     public void createNetwork() {
-        EthereumGlobalProofOfWorkNetwork<?> ethereumNetwork = new EthereumGlobalProofOfWorkNetwork<>(randomnessEngine,
-                new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
+
+        EthereumGlobalProofOfWorkNetwork<?> ethereumNetwork =
+                new EthereumGlobalProofOfWorkNetwork<>
+                (// new 一个以太坊POW网络
+                        randomnessEngine, // 随机数生成引擎
+                        new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine)  // 模拟以太坊网络的算力分布
+                );
         this.network = ethereumNetwork;
         ethereumNetwork.populateNetwork(simulator,
-                new GhostProtocolConfig(EthereumBlock.generateGenesisBlock(ETHEREUM_DIFFICULTY_2022),
-                        this.averageBlockInterval));
+                                                                    new GhostProtocolConfig(EthereumBlock.generateGenesisBlock(ETHEREUM_DIFFICULTY_2022),
+                                                                    this.averageBlockInterval)
+        );
     }
 
     @Override

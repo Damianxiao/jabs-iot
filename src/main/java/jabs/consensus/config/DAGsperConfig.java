@@ -3,7 +3,7 @@ package jabs.consensus.config;
 import jabs.ledgerdata.SingleParentBlock;
 
 /**
- *
+ *   extends GhostProtocolConfig
  */
 public final class DAGsperConfig<B extends SingleParentBlock<B>> extends GhostProtocolConfig<B> {
     private final int checkpointSpace;

@@ -23,6 +23,7 @@ public class BitcoinGlobalProofOfWorkNetwork<R extends Enum<R>> extends
      * @return the genesis block with no parents
      */
     @Override
+    // 创世区块不包含交易
     public BitcoinBlockWithoutTx genesisBlock(double difficulty) {
         return new BitcoinBlockWithoutTx(0, 0, 0, null, null, difficulty, 0);
     }

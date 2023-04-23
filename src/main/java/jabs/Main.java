@@ -35,15 +35,19 @@ public class Main {
                 Paths.get("output/bitcoin-reorgs-log.csv")));
         scenario.run();
 
-        // Simulate 1 hour in the life of Ethereum network
-        // Ghost protocol with blocks every 14 seconds on average
+        // Simulate 1 hour in the life of Ethereum network 一小时测试在ethereum
+        // Ghost protocol with blocks every 14 seconds on average ghost协议下、平均每个块14s
         // Around 6000 nodes with 37 miners
         scenario = new NormalEthereumNetworkScenario("One hour in the life of Ethereum", 1,
                 3600, 13.3);
+
+        //区块传播延时0.9
         scenario.AddNewLogger(new BlockPropagationDelayLogger(
                 Paths.get("output/ethereum-50-propagation-delay-log.csv"), 0.5));
+        //区块传播延时0.9
         scenario.AddNewLogger(new BlockPropagationDelayLogger(
                 Paths.get("output/ethereum-90-propagation-delay-log.csv"), 0.9));
+        // 记录叔块比率
         scenario.AddNewLogger(new FinalUncleBlocksLogger(
                 Paths.get("output/ethereum-uncle-rate.csv")));
         scenario.run();
