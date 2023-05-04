@@ -34,6 +34,21 @@
       <artifactId>fastcsv</artifactId>
       <version>2.1.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-events-sdk-transformer</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-log4j2</artifactId>
+      <version>1.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-serialization</artifactId>
+      <version>1.0.1</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -131,9 +146,10 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.4.0</version>
         <configuration>
-          <source>8</source>
+          <source>17</source>
           <show>public</show>
         </configuration>
+
         <reportSets>
           <reportSet>
             <reports>

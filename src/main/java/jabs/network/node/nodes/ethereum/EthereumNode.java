@@ -1,10 +1,10 @@
 package jabs.network.node.nodes.ethereum;
 
-import jabs.consensus.algorithm.AbstractChainBasedConsensus;
+import jabs.consensus.algorithm.*;
 import jabs.consensus.blockchain.LocalBlockTree;
-import jabs.consensus.algorithm.GhostProtocol;
-import jabs.consensus.algorithm.VotingBasedConsensus;
 import jabs.consensus.config.GhostProtocolConfig;
+import jabs.consensus.config.NakamotoConsensusConfig;
+import jabs.consensus.config.NakamotoHeaviestChainConsensusConfig;
 import jabs.ledgerdata.Vote;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.ledgerdata.ethereum.EthereumTx;
@@ -27,6 +27,13 @@ public class EthereumNode extends PeerBlockchainNode<EthereumBlock, EthereumTx> 
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new EthereumGethP2P(),
                 new GhostProtocol<>(new LocalBlockTree<>(genesisBlock), ghostProtocolConfig));
+    }
+
+    public EthereumNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+                        EthereumBlock genesisBlock, NakamotoConsensusConfig nakamotoConsensusConfig) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
+                new EthereumGethP2P(),
+                new NakamotoHeaviestChainConsensus<>(new LocalBlockTree<>(genesisBlock), nakamotoConsensusConfig));
     }
 
     public EthereumNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,

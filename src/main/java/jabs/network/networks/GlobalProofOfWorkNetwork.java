@@ -28,7 +28,7 @@ public abstract class GlobalProofOfWorkNetwork<N extends Node, M extends MinerNo
 
     // 启动所有矿工挖矿过程
     public void startAllMiningProcesses() {
-        List<MinerNode> allMiners = this.getAllMiners();
+        List<MinerNode> allMiners = this.getAllMiners(); 
         for (MinerNode miner: allMiners) {
             miner.startMining();
         }
@@ -67,7 +67,7 @@ public abstract class GlobalProofOfWorkNetwork<N extends Node, M extends MinerNo
     public abstract M createSampleMiner(Simulator simulator, int nodeID, double hashPower, B genesisBlock,
                                         ChainBasedConsensusConfig chainBasedConsensusConfig);
 
-    // 用默认数量的节点和矿工填充网络 默认数量
+    // 用默认数量的节点和矿工填充网络
     public void populateNetwork(Simulator simulator, ConsensusAlgorithmConfig consensusAlgorithmConfig) {
         this.populateNetwork(simulator, minerDistribution.totalNumberOfMiners(), nodeDistribution.totalNumberOfNodes(),
                 consensusAlgorithmConfig);

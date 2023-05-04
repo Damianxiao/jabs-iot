@@ -100,9 +100,10 @@ public abstract class AbstractScenario {
      */
     public void run() throws IOException {
         System.err.printf("Staring %s...\n", this.name);
-        this.createNetwork();
-        this.insertInitialEvents();
+        this.createNetwork(); // 创建网络
+        this.insertInitialEvents(); // 在以太坊中， 这里是启动所有挖矿过程
 
+        // 初始化日志
         for (AbstractLogger logger:this.loggers) {
             logger.setScenario(this);
             logger.initialLog();

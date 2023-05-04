@@ -48,8 +48,10 @@ public class EthereumProofOfWorkGlobalNetworkStats86Countries extends EthereumNo
     };
 
     public static final int ETHEREUM_NUM_MINERS_2022 = 37;
+//    public static final int ETHEREUM_NUM_MINERS_2022 = 2000;
 
-    public static final long ETHEREUM_DIFFICULTY_2022 = 2097;
+    public static final long ETHEREUM_DIFFICULTY_2022 = 1000;
+//    public static final long ETHEREUM_DIFFICULTY_2022 = 2097;
 
 
     @Override

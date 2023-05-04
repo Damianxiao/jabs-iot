@@ -2,6 +2,8 @@ package jabs.network.networks.ethereum;
 
 import jabs.consensus.config.ChainBasedConsensusConfig;
 import jabs.consensus.config.GhostProtocolConfig;
+import jabs.consensus.config.NakamotoConsensusConfig;
+
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.network.networks.GlobalProofOfWorkNetwork;
 import jabs.network.stats.*;
@@ -35,19 +37,32 @@ public class EthereumGlobalProofOfWorkNetwork<R extends Enum<R>> extends GlobalP
                 0);
     }
 
+//    @Override
+//    public EthereumNode createSampleNode(Simulator simulator, int nodeID, EthereumBlock genesisBlock, ChainBasedConsensusConfig chainBasedConsensusConfig) {
+//        R region = this.sampleRegion(); // 随机选择region
+//        return new EthereumNode(simulator, this, nodeID, this.sampleDownloadBandwidth(region), this.sampleUploadBandwidth(region), genesisBlock, (GhostProtocolConfig) chainBasedConsensusConfig);
+//    }
+    // 使用nakamoto
     @Override
     public EthereumNode createSampleNode(Simulator simulator, int nodeID, EthereumBlock genesisBlock, ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = this.sampleRegion(); // 随机选择region
-        return new EthereumNode(simulator, this, nodeID, this.sampleDownloadBandwidth(region), this.sampleUploadBandwidth(region), genesisBlock, (GhostProtocolConfig) chainBasedConsensusConfig);
+        return new EthereumNode(simulator, this, nodeID, this.sampleDownloadBandwidth(region), this.sampleUploadBandwidth(region), genesisBlock, (NakamotoConsensusConfig) chainBasedConsensusConfig);
     }
 
     // 矿工需要额外指定hash算力
+//    @Override
+//    public EthereumMinerNode createSampleMiner(Simulator simulator, int nodeID, double hashPower, EthereumBlock genesisBlock, ChainBasedConsensusConfig chainBasedConsensusConfig) {
+//        R region = this.sampleMinerRegion();
+//        return new EthereumMinerNode(simulator, this, nodeID, this.sampleDownloadBandwidth(region),
+//                this.sampleUploadBandwidth(region), hashPower,
+//                genesisBlock, (GhostProtocolConfig) chainBasedConsensusConfig);
+//    }
     @Override
     public EthereumMinerNode createSampleMiner(Simulator simulator, int nodeID, double hashPower, EthereumBlock genesisBlock, ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = this.sampleMinerRegion();
         return new EthereumMinerNode(simulator, this, nodeID, this.sampleDownloadBandwidth(region),
                 this.sampleUploadBandwidth(region), hashPower,
-                genesisBlock, (GhostProtocolConfig) chainBasedConsensusConfig);
+                genesisBlock, (NakamotoConsensusConfig) chainBasedConsensusConfig);
     }
 
 }

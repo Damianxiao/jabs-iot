@@ -21,6 +21,8 @@ public class NakamotoHeaviestChainConsensus<B extends SingleParentPoWBlock<B>, T
         this.currentMainChainHead = localBlockTree.getGenesisBlock();
     }
 
+
+    // 最重链
     @Override
     public void newIncomingBlock(B block) {
         HashSet<B> pathToGenesis = localBlockTree.getAllAncestors(block);
